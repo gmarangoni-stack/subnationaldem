@@ -1,0 +1,35 @@
+---
+title: "Subnational Index Demo"
+author: "Gustavo Marangoni"
+format: beamer
+---
+
+```{r}
+library(tidyverse)
+library(knitr)
+
+load("SDI (v.1).RData")
+
+df <- 
+  data_sdi |> 
+  filter(region_name == 'SUDESTE')
+```
+
+# Analysis Slide
+```{r}
+#Graph dem by region by time
+df |> 
+  ggplot(aes(x = year, y = SUR_index_sub_exe,
+             color = state_name)) +
+  geom_line() +
+  theme_classic() +
+  labs(
+    x = "Year", 
+    y = "Subnational Democracy Index Score",
+    title = "Democracy Index on the Sudeste Region in Brazil Over Time",
+    color = "State"
+  )
+
+```
+
+
